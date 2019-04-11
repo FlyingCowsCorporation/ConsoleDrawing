@@ -6,6 +6,10 @@ public class Rectangle extends Shape {
 
     @Override
     public void fill() {
-        // TODO
+        for(int i = 0; i < SIZEX; i++){
+            for(int j = 0; j < SIZEY; j++){
+                fillPixel(i, j);
+            }
+        }
     }
 }

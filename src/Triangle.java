@@ -6,6 +6,21 @@ public class Triangle extends Shape {
 
     @Override
     public void fill() {
-        // TODO
+        double halfwayPoint = SIZEX / 2.0;
+
+        for(int i = 0; i < SIZEY; i++){
+            double offset = calculatePixelOffset(SIZEY - i - 1);
+
+            int startingPoint = (int)Math.round(halfwayPoint - offset);
+            int endPoint = (int)Math.round(halfwayPoint + offset);
+
+            for(int j = startingPoint; j < endPoint; j++) {
+                fillPixel(j, i);
+            }
+        }
+    }
+
+    private double calculatePixelOffset(int yPosition){
+        return yPosition / (double)SIZEY * SIZEX * 0.5;
     }
 }
