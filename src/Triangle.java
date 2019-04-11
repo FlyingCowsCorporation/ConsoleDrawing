@@ -8,14 +8,14 @@ public class Triangle extends Shape {
     public void fill() {
         double halfwayPoint = SIZEX / 2.0;
 
-        for(int i = 0; i < SIZEY; i++){
-            double offset = calculatePixelOffset(SIZEY - i - 1);
+        for(int y = 0; y < SIZEY; y++){
+            double offset = calculatePixelOffset(SIZEY - y - 1);
 
             int startingPoint = (int)Math.round(halfwayPoint - offset);
             int endPoint = (int)Math.round(halfwayPoint + offset);
 
-            for(int j = startingPoint; j < endPoint; j++) {
-                fillPixel(j, i);
+            for(int x = startingPoint; x < endPoint; x++) {
+                fillPixel(x, y);
             }
         }
     }
