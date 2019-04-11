@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Shape {
     private String pixels[][];
     protected final int SIZEX;
@@ -31,6 +34,37 @@ public abstract class Shape {
 
     public boolean isFilledPixel(int x, int y) {
         return (pixels[x][y].equals(FILLED));
+    }
+
+    public void makeOutline(){
+
+        List<Integer> clearX = new ArrayList<>();
+        List<Integer> clearY = new ArrayList<>();
+
+        for(int y = 0; y < SIZEY; y++){
+            for(int x = 0; x < SIZEX; x++){
+                if(isSurrounded(x, y)){
+                    clearX.add(x);
+                    clearY.add(y);
+                }
+            }
+        }
+
+        for(int i = 0; i < clearX.size(); i++){
+            clearPixel(clearX.get(i), clearY.get(i));
+        }
+    }
+
+    private boolean isSurrounded(int x, int y){
+        // Edge pixels are never fully surrounded.
+        if((x <= 0) || (y <= 0) || (x >= SIZEX - 1) || (y >= SIZEY - 1)){
+            return false;
+        }
+
+        return (isFilledPixel(x-1,y)
+                && isFilledPixel(x+1, y)
+                && isFilledPixel(x, y-1)
+                && isFilledPixel(x, y+1));
     }
 
     public String toString() {
