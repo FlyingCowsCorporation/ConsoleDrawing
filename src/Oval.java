@@ -6,6 +6,7 @@ public class Oval extends Shape{
     }
 
     private static double offCenter(double center, int size, int pixel) {
+
         return 2 * (pixel + 0.5 - center) / size;
     }
 
