@@ -15,12 +15,17 @@ public abstract class Shape {
         }
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+        initializePixels();
+    }
+
+    protected void initializePixels(){
         pixels = new String[sizeX][sizeY];
         for (int x = 0; x < sizeX; x++) {
             for (int y = 0; y < sizeY; y++) {
                 clearPixel(x, y);
             }
         }
+        fill();
     }
 
     public int getWidth() {
@@ -34,11 +39,13 @@ public abstract class Shape {
     public void setWidth(int width) {
         if(width<0) width = 0;
         this.sizeX = width;
+        initializePixels();
     }
 
     public void setHeight(int height) {
         if(height<0) height = 0;
         this.sizeY = height;
+        initializePixels();
     }
 
     public abstract void fill();

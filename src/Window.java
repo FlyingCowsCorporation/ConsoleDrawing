@@ -11,7 +11,6 @@ public class Window {
     private JFrame frame = new JFrame("My Drawing");
     private JPanel canvasPanel = new JPanel();
     private JTextArea canvasTextArea = new JTextArea(40, 60);
-    private SceneObject sceneObject;
     private Canvas canvas = new Canvas(canvasTextArea.getColumns(),canvasTextArea.getRows());
 
     public void createWindow() throws Exception {
@@ -79,7 +78,7 @@ public class Window {
     private void buttonAction(String text) {
         switch (text) {
             case "Add Square":
-                sceneObject = new SceneObject(new Rectangle(10,10),10,10);
+                SceneObject sceneObject = new SceneObject(new Rectangle(10,10),10,10);
                 canvas.addObject(sceneObject);
                 renderCanvas();
                 break;
@@ -97,27 +96,27 @@ public class Window {
                 break;
 
             case "Make hollow":
-                sceneObject.getShape().makeOutline();
+                canvas.getLastObject().getShape().makeOutline();
                 renderCanvas();
                 break;
 
             case "Move Up":
-                sceneObject.move(0, -1);
+                canvas.getLastObject().move(0, -1);
                 renderCanvas();
                 break;
 
             case "Move down":
-                sceneObject.move(0, 1);
+                canvas.getLastObject().move(0, 1);
                 renderCanvas();
                 break;
 
             case "Move right":
-                sceneObject.move(1, 0);
+                canvas.getLastObject().move(1, 0);
                 renderCanvas();
                 break;
 
             case "Move left":
-                sceneObject.move(-1, 0);
+                canvas.getLastObject().move(-1, 0);
                 renderCanvas();
                 break;
 
@@ -132,22 +131,22 @@ public class Window {
                 break;
 
             case "Make taller":
-                sceneObject.scale(0,1);
+                canvas.getLastObject().scale(0,1);
                 renderCanvas();
                 break;
 
             case "Make shorter":
-                sceneObject.scale(0,-1);
+                canvas.getLastObject().scale(0,-1);
                 renderCanvas();
                 break;
 
             case "Make wider":
-                sceneObject.scale(1,0);
+                canvas.getLastObject().scale(1,0);
                 renderCanvas();
                 break;
 
             case "Make narrower":
-                sceneObject.scale(-1,0);
+                canvas.getLastObject().scale(-1,0);
                 renderCanvas();
                 break;
 

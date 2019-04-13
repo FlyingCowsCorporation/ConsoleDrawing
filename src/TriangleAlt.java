@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class TriangleAlt extends Shape {
     public TriangleAlt(int SIZEX, int SIZEY) {
         super(SIZEX, SIZEY);
-        fill();
     }
 
     @Override

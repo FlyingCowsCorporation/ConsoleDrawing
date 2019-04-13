@@ -66,4 +66,11 @@ public class Canvas {
             scene.remove(scene.size() - 1);
         }
     }
+
+    public SceneObject getLastObject() {
+        if(scene.size() == 0) {
+            return null;
+        }
+        return scene.get(scene.size() - 1);
+    }
 }

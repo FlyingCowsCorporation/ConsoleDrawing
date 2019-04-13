@@ -2,7 +2,6 @@
 public class TriangleAlt2 extends Shape {
     public TriangleAlt2(int SIZEX, int SIZEY) {
         super(SIZEX, SIZEY);
-        fill();
     }
 
     @Override

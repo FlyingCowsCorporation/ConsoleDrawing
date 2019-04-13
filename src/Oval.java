@@ -2,7 +2,6 @@ public class Oval extends Shape{
 
     public Oval(int SIZEX, int SIZEY) {
         super(SIZEX, SIZEY);
-        fill();
     }
 
     private static double offCenter(double center, int size, int pixel) {
