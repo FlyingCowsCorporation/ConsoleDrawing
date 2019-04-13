@@ -32,31 +32,28 @@ public class Window {
         JPanel menuPanel = new JPanel();
 
         menuPanel.setBorder(new TitledBorder(new EtchedBorder(), "Menu"));
-        menuPanel.setPreferredSize(new Dimension(135,280));
+        menuPanel.setPreferredSize(new Dimension(135,380));
 
         //buttons
-        ArrayList<JButton> buttons = new ArrayList<>();
-        JButton squareButton = new JButton("Add Square");
-        buttons.add(squareButton);
-        JButton ovalButton = new JButton("Add Oval");
-        buttons.add(ovalButton);
-        JButton triangleButton = new JButton("Add Triangle");
-        buttons.add(triangleButton);
-        JButton hollowButton = new JButton("Make hollow");
-        buttons.add(hollowButton);
-        JButton upButton =  new JButton("Move Up");
-        buttons.add(upButton);
-        JButton downButton =  new JButton("Move down");
-        buttons.add(downButton);
-        JButton rightButton =  new JButton("Move right");
-        buttons.add(rightButton);
-        JButton leftButton =  new JButton("Move left");
-        buttons.add(leftButton);
-        JButton clearButton = new JButton("Clear canvas");
-        buttons.add(clearButton);
-        JButton clearLastButton = new JButton("Clear last object");
-        buttons.add(clearLastButton);
-        for(JButton button:buttons){
+        ArrayList<String> buttonText = new ArrayList<>();
+        
+        buttonText.add("Add Square");
+        buttonText.add("Add Oval");
+        buttonText.add("Add Triangle");
+        buttonText.add("Make hollow");
+        buttonText.add("Move Up");
+        buttonText.add("Move down");
+        buttonText.add("Move right");
+        buttonText.add("Move left");
+        buttonText.add("Clear canvas");
+        buttonText.add("Clear last object");
+        buttonText.add("Make taller");
+        buttonText.add("Make shorter");
+        buttonText.add("Make wider");
+        buttonText.add("Make narrower");
+
+        for(String text : buttonText){
+            JButton button = new JButton(text);
             button.setPreferredSize(new Dimension(120,20));
             //add action listner
             button.addActionListener(
@@ -134,7 +131,28 @@ public class Window {
                 renderCanvas();
                 break;
 
-                default:
+            case "Make taller":
+                sceneObject.scale(0,1);
+                renderCanvas();
+                break;
+
+            case "Make shorter":
+                sceneObject.scale(0,-1);
+                renderCanvas();
+                break;
+
+            case "Make wider":
+                sceneObject.scale(1,0);
+                renderCanvas();
+                break;
+
+            case "Make narrower":
+                sceneObject.scale(-1,0);
+                renderCanvas();
+                break;
+
+
+            default:
                     System.out.println("Buttons does not exist");
         }
     }

@@ -32,11 +32,13 @@ public abstract class Shape {
     }
 
     public void setWidth(int width) {
-        this.sizeX = sizeX;
+        if(width<0) width = 0;
+        this.sizeX = width;
     }
 
     public void setHeight(int height) {
-        this.sizeY = sizeY;
+        if(height<0) height = 0;
+        this.sizeY = height;
     }
 
     public abstract void fill();
