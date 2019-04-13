@@ -7,8 +7,8 @@ public class Rectangle extends Shape {
     @Override
     public void fill() {
         // TODO
-        for(int xPixel = 0; xPixel< SIZEX; xPixel ++){
-            for (int yPixel = 0; yPixel< SIZEY; yPixel++)
+        for(int xPixel = 0; xPixel< sizeX; xPixel ++){
+            for (int yPixel = 0; yPixel< sizeY; yPixel++)
             fillPixel(xPixel, yPixel);
         }
     }

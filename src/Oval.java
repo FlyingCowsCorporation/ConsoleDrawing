@@ -12,13 +12,13 @@ public class Oval extends Shape{
 
     @Override
     public void fill() {
-        double xCenter = SIZEX / 2.0;
-        double yCenter = SIZEY / 2.0;
+        double xCenter = sizeX / 2.0;
+        double yCenter = sizeY / 2.0;
 
-        for (int xPixel = 0; xPixel < SIZEX; xPixel++) {
-            double xOffCenter = offCenter(xCenter, SIZEX, xPixel);
-            for (int yPixel = 0; yPixel < SIZEY; yPixel++) {
-                double yOffCenter = offCenter(yCenter, SIZEY, yPixel);
+        for (int xPixel = 0; xPixel < sizeX; xPixel++) {
+            double xOffCenter = offCenter(xCenter, sizeX, xPixel);
+            for (int yPixel = 0; yPixel < sizeY; yPixel++) {
+                double yOffCenter = offCenter(yCenter, sizeY, yPixel);
                 if (xOffCenter * xOffCenter + yOffCenter * yOffCenter <= 1) {
                     fillPixel(xPixel, yPixel);
                 }

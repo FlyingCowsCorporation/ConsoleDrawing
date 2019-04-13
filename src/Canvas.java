@@ -32,7 +32,7 @@ public class Canvas {
         if( relX < 0 || relY < 0) {
             return false;
         }
-        if( relX >= obj.getShape().SIZEX || relY >= obj.getShape().SIZEY) {
+        if( relX >= obj.getShape().getWidth() || relY >= obj.getShape().getHeight()) {
             return false;
         }
         return obj.getShape().isFilledPixel(relX, relY);

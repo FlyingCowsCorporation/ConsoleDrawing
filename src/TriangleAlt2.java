@@ -8,11 +8,11 @@ public class TriangleAlt2 extends Shape {
     @Override
     public void fill() {
         // TODO
-        int half = SIZEX / 2;
+        int half = sizeX / 2;
         int offSet = 0;
 
 
-        for (int y = SIZEY - 1; y >= 0; y--) {
+        for (int y = sizeY - 1; y >= 0; y--) {
 
             for (int x = half - offSet; x < half + 1 + offSet; x++) {
 

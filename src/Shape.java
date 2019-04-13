@@ -3,23 +3,40 @@ import java.util.List;
 
 public abstract class Shape {
     private String pixels[][];
-    protected final int SIZEX;
-    protected final int SIZEY;
+
+    private int sizeX;
+    private int sizeY;
     private static final String FILLED = "*";
     private static final String EMPTY  = " ";
 
-    public Shape(int SIZEX, int SIZEY) {
-        if (SIZEX <= 0 || SIZEY <= 0) {
+    public Shape(int sizeX, int sizeY) {
+        if (sizeX <= 0 || sizeY <= 0) {
             throw new IllegalArgumentException("Illegal size of shape");
         }
-        this.SIZEX = SIZEX;
-        this.SIZEY = SIZEY;
-        pixels = new String[SIZEX][SIZEY];
-        for (int x = 0; x < SIZEX; x++) {
-            for (int y = 0; y < SIZEY; y++) {
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        pixels = new String[sizeX][sizeY];
+        for (int x = 0; x < sizeX; x++) {
+            for (int y = 0; y < sizeY; y++) {
                 clearPixel(x, y);
             }
         }
+    }
+
+    public int getWidth() {
+        return sizeX;
+    }
+
+    public int getHeight() {
+        return sizeY;
+    }
+
+    public void setWidth(int width) {
+        this.sizeX = sizeX;
+    }
+
+    public void setHeight(int height) {
+        this.sizeY = sizeY;
     }
 
     public abstract void fill();
@@ -41,8 +58,8 @@ public abstract class Shape {
         List<Integer> clearX = new ArrayList<>();
         List<Integer> clearY = new ArrayList<>();
 
-        for(int y = 0; y < SIZEY; y++){
-            for(int x = 0; x < SIZEX; x++){
+        for(int y = 0; y < sizeY; y++){
+            for(int x = 0; x < sizeX; x++){
                 if(isSurrounded(x, y)){
                     clearX.add(x);
                     clearY.add(y);
@@ -57,7 +74,7 @@ public abstract class Shape {
 
     private boolean isSurrounded(int x, int y){
         // Edge pixels are never fully surrounded.
-        if((x <= 0) || (y <= 0) || (x >= SIZEX - 1) || (y >= SIZEY - 1)){
+        if((x <= 0) || (y <= 0) || (x >= sizeX - 1) || (y >= sizeY - 1)){
             return false;
         }
 
@@ -69,8 +86,8 @@ public abstract class Shape {
 
     public String toString() {
         String output = "";
-        for (int y = SIZEY - 1; y >= 0; y--) {
-            for (int x = 0; x < SIZEX; x++) {
+        for (int y = sizeY - 1; y >= 0; y--) {
+            for (int x = 0; x < sizeX; x++) {
                 output += pixels[x][y];
             }
             output += "\n";

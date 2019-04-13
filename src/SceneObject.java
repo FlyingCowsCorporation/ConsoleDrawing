@@ -35,4 +35,9 @@ public class SceneObject {
         this.x += dX;
         this.y += dY;
     }
+
+    public void scale(int dX, int dY){
+        this.shape.setWidth(this.shape.getWidth() + dX);
+        this.shape.setHeight(this.shape.getHeight() + dY);
+    }
 }

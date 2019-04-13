@@ -6,10 +6,10 @@ public class Triangle extends Shape {
 
     @Override
     public void fill() {
-        double halfwayPoint = SIZEX / 2.0;
+        double halfwayPoint = sizeX / 2.0;
 
-        for(int y = 0; y < SIZEY; y++){
-            double offset = calculatePixelOffset(SIZEY - y - 1);
+        for(int y = 0; y < sizeY; y++){
+            double offset = calculatePixelOffset(sizeY - y - 1);
 
             int startingPoint = (int)Math.round(halfwayPoint - offset);
             int endPoint = (int)Math.round(halfwayPoint + offset);
@@ -21,6 +21,6 @@ public class Triangle extends Shape {
     }
 
     private double calculatePixelOffset(int yPosition){
-        return yPosition / (double)SIZEY * SIZEX * 0.5;
+        return yPosition / (double) sizeY * sizeX * 0.5;
     }
 }
