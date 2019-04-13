@@ -1,20 +1,8 @@
-import javax.swing.*;
-import java.sql.SQLOutput;
-
 public class ConsoleDrawing {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
-        JFrame frame = new JFrame("My Drawing");
-        JPanel pannel = new JPanel();
-        JTextArea textArea = new JTextArea();
-        frame.pack();
-        frame.setSize(400,400);
-        frame.add(pannel);
-        textArea.setSize(200,200);
-        pannel.add(textArea);
-
-        frame.setVisible(true);
-
+        Window window = new Window();
+        window.createWindow();
 
         System.out.println("Opdracht 1-3");
         System.out.println();
