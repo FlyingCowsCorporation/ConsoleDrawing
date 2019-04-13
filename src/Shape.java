@@ -4,8 +4,8 @@ import java.util.List;
 public abstract class Shape {
     private String pixels[][];
 
-    private int sizeX;
-    private int sizeY;
+    protected int sizeX;
+    protected int sizeY;
     private static final String FILLED = "*";
     private static final String EMPTY  = " ";
 
