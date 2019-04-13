@@ -56,4 +56,14 @@ public class Canvas {
         }
         return sb.toString();
     }
+
+    public void clear() {
+        scene.clear();
+    }
+
+    public void clearLastObject() {
+        if(scene.size()>0) {
+            scene.remove(scene.size() - 1);
+        }
+    }
 }

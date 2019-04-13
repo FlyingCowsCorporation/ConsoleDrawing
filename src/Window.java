@@ -2,10 +2,7 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 
@@ -23,7 +20,7 @@ public class Window {
         Font font = Font.createFont(Font.TRUETYPE_FONT, is);
 
 
-        frame.setSize(600, 500);
+        frame.setSize(880, 600);
         frame.setLocation(150, 250);
         frame.setVisible(true);
         frame.setBackground(Color.GRAY);
@@ -34,7 +31,7 @@ public class Window {
         JPanel menuPanel = new JPanel();
 
         menuPanel.setBorder(new TitledBorder(new EtchedBorder(), "Menu"));
-        menuPanel.setPreferredSize(new Dimension(130,250));
+        menuPanel.setPreferredSize(new Dimension(135,280));
 
         //buttons
         ArrayList<JButton> buttons = new ArrayList<>();
@@ -56,6 +53,8 @@ public class Window {
         buttons.add(leftButton);
         JButton clearButton = new JButton("Clear canvas");
         buttons.add(clearButton);
+        JButton clearLastButton = new JButton("Clear last object");
+        buttons.add(clearLastButton);
         for(JButton button:buttons){
             button.setPreferredSize(new Dimension(120,20));
             //add action listner
@@ -84,47 +83,54 @@ public class Window {
             case "Add Square":
                 sceneObject = new SceneObject(new Rectangle(10,10),10,10);
                 canvas.addObject(sceneObject);
-                renderCanvast();
+                renderCanvas();
                 break;
 
             case "Add Oval":
                 sceneObject = new SceneObject(new Oval(10,10),10,10);
                 canvas.addObject(sceneObject);
-                renderCanvast();
+                renderCanvas();
                 break;
 
             case "Add Triangle":
                 sceneObject = new SceneObject(new Triangle(10,10),10,10);
                 canvas.addObject(sceneObject);
-                renderCanvast();
+                renderCanvas();
                 break;
 
             case "Make hollow":
                 sceneObject.getShape().makeOutline();
+                renderCanvas();
                 break;
 
             case "Move Up":
                 sceneObject.move(0, -1);
-                renderCanvast();
+                renderCanvas();
                 break;
 
             case "Move down":
                 sceneObject.move(0, 1);
-                renderCanvast();
+                renderCanvas();
                 break;
 
             case "Move right":
                 sceneObject.move(1, 0);
-                renderCanvast();
+                renderCanvas();
                 break;
 
             case "Move left":
                 sceneObject.move(-1, 0);
-                renderCanvast();
+                renderCanvas();
                 break;
 
             case "Clear canvas":
+                canvas.clear();
+                renderCanvas();
+                break;
 
+            case "Clear last object":
+                canvas.clearLastObject();
+                renderCanvas();
                 break;
 
                 default:
@@ -132,7 +138,7 @@ public class Window {
         }
     }
 
-    private void renderCanvast() {
+    private void renderCanvas() {
         canvasTextArea.setText(canvas.toString());
 
     }
