@@ -57,7 +57,13 @@ public class Window {
             //add action listner
             button.addActionListener(
                     e -> {
-                        buttonAction(button.getText());
+                        try {
+
+                            buttonAction(button.getText());
+                        }
+                        catch (NullPointerException n){
+                            //can happen when the object list is empty
+                        }
                     });
             menuPanel.add(button);
         }
