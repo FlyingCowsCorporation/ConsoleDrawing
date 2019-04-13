@@ -15,11 +15,12 @@ public class Window {
     private Canvas canvas = new Canvas(canvasTextArea.getColumns(),canvasTextArea.getRows());
 
     public void createWindow() throws Exception {
+        ///////////import font
         String fName = "fonts/square.ttf";
         FileInputStream is = new FileInputStream(fName);
         Font font = Font.createFont(Font.TRUETYPE_FONT, is);
 
-
+        ///////////init frame
         frame.setSize(880, 600);
         frame.setLocation(150, 250);
         frame.setVisible(true);
