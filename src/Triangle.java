@@ -9,7 +9,7 @@ public class Triangle extends Shape {
         double halfwayPoint = sizeX / 2.0;
 
         for(int y = 0; y < sizeY; y++){
-            double offset = calculatePixelOffset(sizeY - y - 1);
+            double offset = calculatePixelOffset(y);
 
             int startingPoint = (int)Math.round(halfwayPoint - offset);
             int endPoint = (int)Math.round(halfwayPoint + offset);
