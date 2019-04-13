@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -11,13 +13,13 @@ public class Window {
 
     private JFrame frame = new JFrame("My Drawing");
     private JPanel canvasPanel = new JPanel();
-    private JTextArea canvasTextArea = new JTextArea(20, 30);
+    private JTextArea canvasTextArea = new JTextArea(40, 60);
     private SceneObject sceneObject;
     private Canvas canvas = new Canvas(canvasTextArea.getColumns(),canvasTextArea.getRows());
 
     public void createWindow() throws Exception {
-        String fName = "/fonts/square.ttf";
-        InputStream is = Window.class.getResourceAsStream(fName);
+        String fName = "fonts/square.ttf";
+        FileInputStream is = new FileInputStream(fName);
         Font font = Font.createFont(Font.TRUETYPE_FONT, is);
 
 
@@ -66,10 +68,9 @@ public class Window {
 
         ///////////canvas
         canvasPanel.setBorder(new TitledBorder(new EtchedBorder(), "Canvas"));
+
+        canvasTextArea.setFont(font.deriveFont(10f));
         canvasTextArea.setEditable(false);
-        canvasTextArea.setFont(font);
-        canvasTextArea.setLineWrap(true);
-        canvasTextArea.setWrapStyleWord(true);
 
         ///////////add everything to frame
         canvasPanel.add(canvasTextArea);
@@ -87,31 +88,39 @@ public class Window {
                 break;
 
             case "Add Oval":
-
+                sceneObject = new SceneObject(new Oval(10,10),10,10);
+                canvas.addObject(sceneObject);
+                renderCanvast();
                 break;
 
             case "Add Triangle":
-
+                sceneObject = new SceneObject(new Triangle(10,10),10,10);
+                canvas.addObject(sceneObject);
+                renderCanvast();
                 break;
 
             case "Make hollow":
-
+                sceneObject.getShape().makeOutline();
                 break;
 
             case "Move Up":
-
+                sceneObject.move(0, -1);
+                renderCanvast();
                 break;
 
             case "Move down":
-
+                sceneObject.move(0, 1);
+                renderCanvast();
                 break;
 
             case "Move right":
-
+                sceneObject.move(1, 0);
+                renderCanvast();
                 break;
 
             case "Move left":
-
+                sceneObject.move(-1, 0);
+                renderCanvast();
                 break;
 
             case "Clear canvas":
